@@ -1,27 +1,15 @@
-class AccountInterface:
-    clientAcc = []
-    tellerAcc = []
+import ClientAccount
+import TellerAccount
+import EtransferPayee
+from datetime import datetime
+import Payee
+from database import Database
 
-    def login(self, username, password, accType):
-        if accType == "cl":
-            for x in self.clientAcc:
-                if x.username == username and x._password == password:
-                    return x
-            return False
-        elif accType == "bt":
-            for x in self.tellerAcc:
-                if x.username == username and x._password == password:
-                    return x
-            return False
-        else:
-            return False
-    
-    # Remove the clientAccount from the array and return true else return False
-    def closeAccount(self, username, password):
-        for x in self.clientAcc:
-            if x.username == username and x._password == password:
-                self.clientAcc.remove(x)
-                return True
-        return False
+class Bank:
+    database = Database('/Users/tahshin/CodeBlocks/Slack-Bot/creds.json', "Test")
+    sheet = database.open_worksheet('UserInfo')
+
+    # def login(self, usrname, passwd):
 
 
+        
