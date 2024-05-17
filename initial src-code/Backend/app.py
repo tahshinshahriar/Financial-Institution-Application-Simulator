@@ -1,18 +1,9 @@
 from __future__ import annotations
 from flask import Flask, render_template, request
 import main
-import ClientAccount
-import TellerAccount
-import EtransferPayee
-from datetime import datetime
-import Payee
 
-main.AccountInterface.tellerAcc.append(TellerAccount.TellerAccount("tahshins", "tahshin.shahriar", "abc"))
 
 app = Flask(__name__)
-bank = main.AccountInterface()
-teller = None
-client =  None
 
 @app.route('/')
 def home():
@@ -21,28 +12,9 @@ def home():
 #Login Page
 @app.route('/login', methods=['POST'])
 def login():
-    acctypel = request.form.getlist('btnVal')
-    acctype = acctypel[-1]
-
-    if acctype == "bt":
-        username = request.form['clusername']
-        password = request.form['clpasswd']
-        global teller
-        teller = bank.login(username, password, "bt")
-        if teller != False or None:
-            return tellerInterface(teller)
-        else:
-            return 'Input and Select all the fields properly'
-    elif acctype == "cl":
-        username = request.form['clusername']
-        password = request.form['clpasswd']
-        global client
-        client = bank.login(username, password, "cl")
-        if client != False or None:
-            return clientInterface(client)
-        else:
-            return render_template('login.html', errmsg = "Input all the fields correctly")
-
+    username = request.form['xxxx']
+    password = request.form['xxxx']
+    
 
 
 # Teller Interface
