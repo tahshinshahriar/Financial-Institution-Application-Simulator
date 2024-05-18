@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -45,6 +46,8 @@ function Copyright(props) {
 
 function CreateAccount() {
   const [error, setError] = React.useState('');
+  const [accountCreated, setAccountCreated] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -81,7 +84,15 @@ function CreateAccount() {
         body: JSON.stringify(formData),
       });
 
+
       console.log('Fetch Response:', response);
+
+    setAccountCreated(true);
+    setTimeout(() => {
+      navigate('/Login', { state: { accountCreated: true } });
+    }, 2000);
+  
+  
 
   if (response.ok) {
     console.log('Data stored successfully');
@@ -218,6 +229,12 @@ function CreateAccount() {
           </Box>
         </Grid>
       </Grid>
+      {accountCreated && (
+        <div>
+          <p>Account created!</p>
+          {/* You can style the message or add other elements here */}
+        </div>
+      )}
     </ThemeProvider>
   );
 }
