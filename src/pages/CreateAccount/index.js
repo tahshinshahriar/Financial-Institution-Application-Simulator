@@ -96,7 +96,7 @@ function CreateAccount() {
     try {
       let accountNumber = generateUniqueAccountNumber(); // Function to generate a unique 7-digit account number
       formData.accountNumber = accountNumber;
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxPRyrGXy7HqChNn0aOC6hBFLqJqtwwpeWgBw34LmUKEopNwg5r9q1Jgog-J4JqKZZI/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyp04ej6P-9Jl_XQpT7V_nJ_1iTtfJFExVNC3qrWdpzxQRlgBu5WST-thD6RTqMMuEz/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
