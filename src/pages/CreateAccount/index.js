@@ -74,23 +74,23 @@ function CreateAccount() {
     try {
       const response = await fetch('https://script.google.com/macros/s/AKfycbymcARgAKS0zUSoFWkFPvjte6OJcrvX9z5Okb-RBISByk4b_JDrD5PIe-ZFOSjeWguf/exec', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
-      console.log('Fetch Response:', response); // Debugging log
+      console.log('Fetch Response:', response);
 
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Data stored successfully', result);
-      } else {
-        console.error('Error storing data');
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
+  if (response.ok) {
+    console.log('Data stored successfully');
+  } else {
+    console.error('Error storing data:', response.status);
+  }
+} catch (error) {
+  console.error('Network error:', error);
+}
   };
 
   return (
