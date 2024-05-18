@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationB from "../common/navbar/navbar";
 
-const Header =() => {
+const HeaderB =() => {
   return(
     <div className="header">
       <NavigationB />
@@ -14,4 +14,4 @@ const Header =() => {
 
 
 }
-export default Header
+export default HeaderB

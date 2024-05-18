@@ -1,9 +1,9 @@
 .header{
-    position: fixed;
+    position: absolute;
     top: 0; left: 0;
     width: 100%;
     padding: 20px 10%; 
-    background: #e30909;
+    background: black;
     display: flex;
     justify-content: space-between;
     align-items: center; z-index:100;
@@ -17,7 +17,7 @@
 }
 
 .logo:hover{
-    color: black;
+    color: red;
 }
 
 .navbar a {
@@ -34,7 +34,7 @@
     top: 100%;
     left: 0;
     position: absolute;
-    width: 0; height: 2px; background:#fff;
+    width: 0; height: 2px; background:red;
     transition: .3s;
 
 
