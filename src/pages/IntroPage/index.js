@@ -123,9 +123,6 @@ function IntroductionPage() {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  
-                </Grid>
                 <Grid item>
                   <Link to='/Signup'>Don't have an account? Signup</Link>
                 

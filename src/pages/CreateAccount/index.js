@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import HeaderB from '../../components/header';
+import { Alert } from '@mui/material';
 
 
 let theme = createTheme({
@@ -43,14 +44,53 @@ function Copyright(props) {
 
 
 function CreateAccount() {
-    
-  const handleSubmit = (event) => {
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const password = data.get('password');
+    const confirmPassword = data.get('confirmPassword');
+
+    console.log('Form Submitted'); // Debugging log
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      console.log('Passwords do not match'); // Debugging log
+      return;
+    }
+
+    setError('');
+
+    const formData = {
+      fullname: data.get('fullname'),
+      dob: data.get('DOB'),
       email: data.get('email'),
-      password: data.get('password'),
-    });
+      password,
+    };
+
+    console.log('Form Data:', formData); // Debugging log
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbymcARgAKS0zUSoFWkFPvjte6OJcrvX9z5Okb-RBISByk4b_JDrD5PIe-ZFOSjeWguf/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Fetch Response:', response); // Debugging log
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Data stored successfully', result);
+      } else {
+        console.error('Error storing data');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
 
   return (
@@ -88,12 +128,13 @@ function CreateAccount() {
             <Typography component="h1" variant="h5">
               Create an Account
             </Typography>
+            {error && <Alert severity="error">{error}</Alert>}
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="Full Name"
+                id="fullname"
                 label="Full Name"
                 name="fullname"
                 autoComplete="fullname"
@@ -147,10 +188,10 @@ function CreateAccount() {
                 margin="normal"
                 required
                 fullWidth
-                name="password"
+                name="confirmPassword"
                 label="Re-Enter your Password"
                 type="password"
-                id="password"
+                id="confirmPassword"
                 InputLabelProps={{
                     shrink: true, // Ensures the label stays above the field
                   }}
