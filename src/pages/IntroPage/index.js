@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import HeaderB from '../../components/header';
+
 
 
 
@@ -45,6 +46,8 @@ function Copyright(props) {
 
 
 function IntroductionPage() {
+  const location = useLocation();
+  const accountCreated = location.state?.accountCreated || false;
   
 
   const handleSubmit = (event) => {
@@ -59,6 +62,7 @@ function IntroductionPage() {
 
   return (
     <ThemeProvider theme={theme}>
+      
       <HeaderB />
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -89,9 +93,11 @@ function IntroductionPage() {
             <Avatar sx={{ m: 4, bgcolor: 'red' }}>
               <LockOutlinedIcon />
             </Avatar>
+            {accountCreated && <p>Account created!</p>}
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
+            
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
@@ -123,9 +129,6 @@ function IntroductionPage() {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  
-                </Grid>
                 <Grid item>
                   <Link to='/Signup'>Don't have an account? Signup</Link>
                 
