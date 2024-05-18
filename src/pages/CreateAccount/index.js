@@ -49,6 +49,25 @@ function CreateAccount() {
   const [accountCreated, setAccountCreated] = React.useState(false);
   const navigate = useNavigate();
 
+  const generateUniqueAccountNumber = () => {
+    const existingAccountNumbers = []; // Array to store existing account numbers
+  
+    // Populate existing account numbers from Google Sheet or any other source
+    // For now, let's assume you have an array of existing account numbers
+  
+    // Generate a random 7-digit number
+    let accountNumber = Math.floor(1000000 + Math.random() * 9000000);
+  
+    // Check if the generated number already exists
+    while (existingAccountNumbers.includes(accountNumber)) {
+      // If the number exists, generate a new one
+      accountNumber = Math.floor(1000000 + Math.random() * 9000000);
+    }
+  
+    // Once a unique number is generated, return it
+    return accountNumber;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -75,7 +94,9 @@ function CreateAccount() {
     console.log('Form Data:', formData); // Debugging log
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbymcARgAKS0zUSoFWkFPvjte6OJcrvX9z5Okb-RBISByk4b_JDrD5PIe-ZFOSjeWguf/exec', {
+      let accountNumber = generateUniqueAccountNumber(); // Function to generate a unique 7-digit account number
+      formData.accountNumber = accountNumber;
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxPRyrGXy7HqChNn0aOC6hBFLqJqtwwpeWgBw34LmUKEopNwg5r9q1Jgog-J4JqKZZI/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -208,13 +229,7 @@ function CreateAccount() {
                   }}
               />
               
-              <Button
-                type="submit"
-                color="roktoLaal"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
+              <Button type="submit" color="roktoLaal" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Create an Account
               </Button>
               <Grid container>
