@@ -172,7 +172,7 @@ function CreateAccount() {
                 autoComplete="fullname"
                 autoFocus
                 InputLabelProps={{
-                    shrink: true, // Ensures the label stays above the field
+                    shrink: true, 
                   }}
                 
               />
@@ -188,7 +188,7 @@ function CreateAccount() {
                 autoFocus
                 
                 InputLabelProps={{
-                  shrink: true, // Ensures the label stays above the field
+                  shrink: true,
                 }}
               />
               <TextField
