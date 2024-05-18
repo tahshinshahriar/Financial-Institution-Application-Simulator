@@ -1,9 +1,10 @@
 import React from "react";
-import './navbar.css';
+import './accountNavbar.css';
+import { Button } from "../Button";
 import { Link } from "react-router-dom";
 
 
-function NavigationB () {
+function aNavigationB () {
   return (
     <header className="header">
         <Link to='/home'><a href='/home' className="logo">T Bank Inc.</a></Link>
@@ -15,9 +16,15 @@ function NavigationB () {
             
 
         </nav>
-        
+        <Button
+            className='btns'
+            buttonStyle='btn--outline'
+            buttonSize='btn--large'
+          >
+            Sign out 
+          </Button>
     </header>
   );
 }
 
-export default NavigationB;
+export default aNavigationB;
