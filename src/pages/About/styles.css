@@ -5,6 +5,33 @@ video {
     position: fixed;
     z-index: -1;
   }
+  .linked{
+    
+  }
+  .linked:hover{
+    color: red;
+    font-size: large;
+  }
+
+  .contt{
+    background-color: rgb(187, 177, 177);
+    opacity: 50%;
+    
+    justify-content: center;
+    width: 85%;
+    height: 80vh;
+    object-fit: contain;
+  }
+
+  .contt:hover{
+    opacity: 70%;
+    cursor: pointer;
+  }
+  .contt2{
+    color: black ;
+  }
+  
+
   
   .hero-container {
     /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
