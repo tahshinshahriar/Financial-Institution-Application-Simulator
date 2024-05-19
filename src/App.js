@@ -5,6 +5,8 @@ import CreateAccount from "./pages/CreateAccount";
 import HomePage from "./pages/HomePage";
 import AccountDetails from "./pages/AccountInterface";
 import AboutPage from "./pages/About";
+import AdminPriv from "./pages/AdminLogin";
+
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route exact path='/Signup' element={<CreateAccount/>} />
           <Route exact path='/Home' element={<HomePage/>} />
           <Route exact path='/About' element={<AboutPage/>} />
+          <Route exact path='/adminLogin' element={<AdminPriv/>} />
+
 
           <Route exact path='/accInt' element={<AccountDetails />} />
         </Routes>
@@ -26,9 +30,12 @@ function App() {
     <div>
       
     </div>
-    <Footer />
+    <br></br>
+    <br></br>
     
+    <Footer />
     </div>
+    
     
   );
 }
