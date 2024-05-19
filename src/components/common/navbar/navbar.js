@@ -9,9 +9,9 @@ function NavigationB () {
         <Link to='/home'><a href='/home' className="logo">T Bank Inc.</a></Link>
         <nav className="navbar">
             <a href="/home">Home</a>
-            <a href="/">About</a>
-            <a href="/">Documentation</a>
-            <a href="/">Contact</a>
+            <a href="/about">About</a>
+            <a href="/docs">Documentation</a>
+            <a href="/contact">Contact</a>
             
 
         </nav>
