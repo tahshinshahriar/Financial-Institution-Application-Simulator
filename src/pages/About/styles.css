@@ -5,9 +5,7 @@ video {
     position: fixed;
     z-index: -1;
   }
-  .linked{
-    
-  }
+  
   .linked:hover{
     color: red;
     font-size: large;
