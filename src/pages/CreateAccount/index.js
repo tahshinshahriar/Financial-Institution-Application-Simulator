@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import HeaderB from '../../components/header';
 import { Alert } from '@mui/material';
+import axios from 'axios';
 
 
 let theme = createTheme({
@@ -48,6 +49,7 @@ function CreateAccount() {
   const [error, setError] = React.useState('');
   const [accountCreated, setAccountCreated] = React.useState(false);
   const navigate = useNavigate();
+  let response;
 
   const generateUniqueAccountNumber = () => {
     const existingAccountNumbers = []; // Array to store existing account numbers
@@ -90,19 +92,24 @@ function CreateAccount() {
       email: data.get('email'),
       password,
     };
+    const dob = data.get('DOB')
+    const fullname = data.get('fullname')
+    const email = data.get('email')
 
     console.log('Form Data:', formData); // Debugging log
 
     try {
       let accountNumber = generateUniqueAccountNumber(); // Function to generate a unique 7-digit account number
       formData.accountNumber = accountNumber;
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxnejCCoZ4irWZpaalgVCQxmdop0FN82DcUl27X0b9nV7ktMgf640l7AozK-Cn2k3Kt/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      axios.post('http://localhost:5000/register_client', {accountNumber,fullname, dob, email, password })
+      .then(resp => {
+        response = resp; 
+        console.log(response.data);
+        // navigate('xxx');
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+        // Handle error (e.g., show an error message)
       });
 
 

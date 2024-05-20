@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import certifi
+from pymongo.errors import DuplicateKeyError, PyMongoError
 
 class Database:
     def __init__(self, connection_string, db_name, collection_name):
@@ -17,8 +18,8 @@ class Database:
         self.collection = self.db[self.collection_name]
     
     
-    def get_password(self, username:str):
-        user_data = self.collection.find_one({"Username": username})
+    def get_password(self, email:str):
+        user_data = self.collection.find_one({"Email": email})
         if user_data:
             return user_data.get("Password")
         return None
@@ -27,8 +28,16 @@ class Database:
         user_data = self.collection.find_one({"Username": username})
         return user_data
     
-    def insert_user(self, user_data:dict):
-        result = self.collection.insert_one(user_data)
-        return result.inserted_id
+    def insert_user(self, user_data: dict):
+        try:
+            result = self.collection.insert_one(user_data)
+            return result
+        except DuplicateKeyError as e:
+            # Handle duplicate key error
+            print(f"Duplicate key error: {e}")
+            return None
+        except PyMongoError as e:
+            print(f"PyMongo error: {e}")
+            return None
 
 
