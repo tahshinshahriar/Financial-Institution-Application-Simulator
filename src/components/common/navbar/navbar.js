@@ -10,7 +10,7 @@ function NavigationB () {
         <nav className="navbar">
             <a href="/home">Home</a>
             <a href="/about">About</a>
-            <a href="/docs">Documentation</a>
+            <a href="/docx">Documentation</a>
             <a href="/contact">Contact</a>
             
 

@@ -20,6 +20,8 @@ function App() {
           <Route exact path='/Login' element={<IntroductionPage/>} />
           <Route exact path='/Signup' element={<CreateAccount/>} />
           <Route exact path='/Home' element={<HomePage/>} />
+          <Route exact path='/contact' element={<HomePage/>} />
+          <Route exact path='/docx' element={<AboutPage/>} />
           <Route exact path='/About' element={<AboutPage/>} />
           <Route exact path='/adminLogin' element={<AdminPriv/>} />
 

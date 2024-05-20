@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Link, useLocation} from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -34,7 +33,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <a color="inherit" href="#">
+      <a color="inherit" href="/">
         T Bank Inc.
       </a>{' '}
       {new Date().getFullYear()}
@@ -46,8 +45,8 @@ function Copyright(props) {
 
 
 function AdminPriv() {
-  const location = useLocation();
-  const accountCreated = location.state?.accountCreated || false;
+  
+  
   
 
   const handleSubmit = (event) => {
